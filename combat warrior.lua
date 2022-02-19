@@ -196,7 +196,7 @@ JpTog:AddKeybind(Enum.KeyCode.J,function(s)
 end)
 
 game:GetService'StarterGui':SetCore("SendNotification",{
-    Title = "Troll Ware",
+    Title = "leanhook",
     Text = "This is in beta (Lots of bugs)",
     Icon = "",
     Duration = 5
