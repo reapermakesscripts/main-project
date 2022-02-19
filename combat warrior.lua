@@ -6,7 +6,7 @@ library.theme.background = "rbxassetid://0"
 library.theme.accentcolor = Color3.fromRGB(86,0,232)
 library.theme.accentcolor2 = Color3.fromRGB(86,0,232)
 
-local window = library:CreateWindow("Troll Ware", Vector2.new(492, 598), Enum.KeyCode.End)
+local window = library:CreateWindow("leanhook", Vector2.new(492, 598), Enum.KeyCode.End)
 
 
 local Lp = game:GetService'Players'.LocalPlayer
