@@ -297,7 +297,6 @@ function library:CreateWindow(name, size, hidebutton)
         window.Frame.BackgroundColor3 = theme.backgroundcolor
     end)
 
-    local def = uis.MouseBehavior
     uis.InputBegan:Connect(function(key)
         if key.KeyCode == window.hidebutton then
             window.Frame.Visible = not window.Frame.Visible
@@ -2961,18 +2960,6 @@ function library:CreateWindow(name, size, hidebutton)
                     return keybind.value
                 end
 
-                local extragui = Instance.new("ScreenGui")
-                extragui.Parent = game.CoreGui
-                extragui.IgnoreGuiInset = true
-                extragui.ResetOnSpawn = false
-
-                local extramodlol = Instance.new("TextButton")
-                extramodlol.Parent = extragui
-                extramodlol.Size = UDim2.new(0, 0, 0, 0)
-                extramodlol.BackgroundTransparency = 1
-                extramodlol.Modal = true
-                extramodlol.Text = ""
-
                 uis.InputBegan:Connect(function(input, gameProcessed)
                     if not gameProcessed then
                         if keybind.Bind.Text == "[...]" then
@@ -2986,9 +2973,6 @@ function library:CreateWindow(name, size, hidebutton)
                             if keybind.value ~= "None" and input.KeyCode == keybind.value then
                                 pcall(keybind.callback)
                             end
-                        end
-                        if input.KeyCode == window.hidebutton then
-                            extragui.Enabled = not extragui.Enabled
                         end
                     end
 
@@ -3576,6 +3560,26 @@ function library:CreateWindow(name, size, hidebutton)
 
             return configSystem
         end
+        
+        local extragui = Instance.new("ScreenGui")
+        extragui.Parent = game.CoreGui
+        extragui.IgnoreGuiInset = true
+        extragui.ResetOnSpawn = false
+
+        local extramodlol = Instance.new("TextButton")
+        extramodlol.Parent = extragui
+        extramodlol.Size = UDim2.new(0, 0, 0, 0)
+        extramodlol.BackgroundTransparency = 1
+        extramodlol.Modal = true
+        extramodlol.Text = ""
+
+        uis.InputBegan:Connect(function(Key , processed)
+            if processed then return end
+
+            if Key.KeyCode == window.hidebutton then
+                extragui.Enabled = not extragui.Enabled
+            end
+        end)
 
         --[[ not finished lol
         function tab:CreatePlayerlist(name)
