@@ -304,9 +304,11 @@ function library:CreateWindow(name, size, hidebutton)
         end
     end)
     local ThisTogMouse = false
-    if ThisTogMouse then
+    while ThisTogMouse do
         uis.MouseBehavior = Enum.MouseBehavior.Default
+        wait()
     end
+
     if window.Frame.Visible == true then
         ThisTogMouse = true
     else
