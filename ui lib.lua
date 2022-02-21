@@ -2987,7 +2987,7 @@ function library:CreateWindow(name, size, hidebutton)
                                 pcall(keybind.callback)
                             end
                         end
-                        if input.KeyCode == hidebutton then
+                        if input.KeyCode == window.hidebutton then
                             extragui.Enabled = not extragui.Enabled
                         end
                     end
