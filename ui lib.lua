@@ -2961,6 +2961,18 @@ function library:CreateWindow(name, size, hidebutton)
                     return keybind.value
                 end
 
+                local extragui = Instance.new("ScreenGui")
+                extragui.Parent = game.CoreGui
+                extragui.IgnoreGuiInset = true
+                extragui.ResetOnSpawn = false
+
+                local extramodlol = Instance.new("TextButton")
+                extramodlol.Parent = extragui
+                extramodlol.Size = UDim2.new(0, 0, 0, 0)
+                extramodlol.BackgroundTransparency = 1
+                extramodlol.Modal = true
+                extramodlol.Text = ""
+
                 uis.InputBegan:Connect(function(input, gameProcessed)
                     if not gameProcessed then
                         if keybind.Bind.Text == "[...]" then
@@ -2975,7 +2987,11 @@ function library:CreateWindow(name, size, hidebutton)
                                 pcall(keybind.callback)
                             end
                         end
+                        if input.KeyCode == hidebutton then
+                            extragui.Enabled = not extragui.Enabled
+                        end
                     end
+
                 end)
 
                 sector:FixSize()
